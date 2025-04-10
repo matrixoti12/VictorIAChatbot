@@ -17,9 +17,25 @@ import json
 import threading
 import openai
 
+# Configuración de la página (DEBE ser la primera llamada a Streamlit)
+st.set_page_config(
+    page_title="VictorIA - Asistente de Minería de Datos",
+    page_icon="🧠",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://docs.victoria.ai',
+        'Report a bug': 'https://github.com/victoria-ai/issues',
+        'About': 'VictorIA - Desarrollada por estudiantes de UNAB El Salvador'
+    }
+)
+
 # Cargar variables de entorno SOLO en entorno local
 if not st.secrets.get("RUNNING_IN_STREAMLIT_CLOUD", False):
     load_dotenv()
+
+# Aplicar estilos personalizados
+design.set_custom_style()
 
 class SecurityValidator:
     def __init__(self):
@@ -225,13 +241,6 @@ class VictoriaChatbot:
         return self.is_generating
 
 def main():
-    # Configuración inicial
-    st.set_page_config(
-        page_title="VictorIA - Asistente de Minería de Datos",
-        page_icon="🧠",
-        layout="wide"
-    )
-    
     # Verifica si los secrets están configurados correctamente
     if 'DEEPSEEK_API_KEY' not in st.secrets and 'DEEPSEEK_API_KEY' not in os.environ:
         st.error("""
@@ -245,7 +254,6 @@ def main():
         return
     
     # Inicializa la interfaz
-    design.init_page()
     design.show_sidebar()
     design.show_header()
     design.show_capabilities()
