@@ -1,29 +1,17 @@
-# Streamlit base y extensiones CRÍTICAS (compatibles con 3.12)
-streamlit==1.32.0
-streamlit-elements==0.1.0
-streamlit-option-menu==0.3.12
-streamlit-card==0.0.5
-
-# Hydralit (versión modificada para Python 3.12)
-hydralit-components==1.0.9  # Versión más reciente compatible
-
-# Núcleo científico
-numpy==1.26.4
-pandas==2.1.4
-scikit-learn==1.3.2
-scipy==1.13.0
-
-# Visualización
-plotly==5.18.0
-altair==5.2.0
-
-# OpenAI/DeepSeek
-openai==1.12.0
-python-dotenv==1.0.0
-requests==2.32.3
-
-# Utilidades esenciales
-htbuilder==0.6.2
-typing_extensions==4.12.2
-
-xgboost==2.0.3
+   streamlit==1.32.0
+   streamlit-elements==0.1.0
+   streamlit-option-menu==0.3.12
+   streamlit-card==0.0.5
+   hydralit-components==1.0.9
+   numpy==1.26.4
+   pandas==2.1.4
+   scikit-learn==1.3.2
+   scipy==1.13.0
+   plotly==5.18.0
+   altair==5.2.0
+   openai==1.12.0
+   python-dotenv==1.0.0
+   requests==2.32.3
+   htbuilder==0.6.2
+   typing_extensions==4.12.2
+   xgboost==2.0.3
