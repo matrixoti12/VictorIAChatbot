@@ -84,7 +84,6 @@ class MLTools:
 
 class VictoriaChatbot:
     def __init__(self):
-        load_dotenv()
         self.stop_generation = False
         self.response_thread = None
         self.current_response = ""
