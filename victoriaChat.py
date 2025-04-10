@@ -17,8 +17,9 @@ import json
 import threading
 import openai
 
-# Cargar variables de entorno
-load_dotenv()
+# Cargar variables de entorno SOLO en entorno local
+if not st.secrets.get("RUNNING_IN_STREAMLIT_CLOUD", False):
+    load_dotenv()
 
 class SecurityValidator:
     def __init__(self):
@@ -224,7 +225,26 @@ class VictoriaChatbot:
         return self.is_generating
 
 def main():
-    # Inicializar la interfaz
+    # Configuración inicial
+    st.set_page_config(
+        page_title="VictorIA - Asistente de Minería de Datos",
+        page_icon="🧠",
+        layout="wide"
+    )
+    
+    # Verifica si los secrets están configurados correctamente
+    if 'DEEPSEEK_API_KEY' not in st.secrets and 'DEEPSEEK_API_KEY' not in os.environ:
+        st.error("""
+            🔒 API Key no configurada. Por favor:
+            
+            1. Para desarrollo local: crea un archivo `.env` con tu clave DEEPSEEK_API_KEY
+            2. Para producción en Streamlit Cloud: configura los secrets en la configuración de la app
+            
+            Consulta la documentación para más detalles.
+        """)
+        return
+    
+    # Inicializa la interfaz
     design.init_page()
     design.show_sidebar()
     design.show_header()
@@ -235,7 +255,11 @@ def main():
     
     # Inicializar el chatbot
     if "chatbot" not in st.session_state:
-        st.session_state.chatbot = VictoriaChatbot()
+        try:
+            st.session_state.chatbot = VictoriaChatbot()
+        except Exception as e:
+            st.error(f"No se pudo inicializar el chatbot: {str(e)}")
+            return
     
     # Inicializar historial de mensajes
     if "messages" not in st.session_state:
