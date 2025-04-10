@@ -16,6 +16,12 @@ import design
 import json
 import threading
 import openai
+import warnings
+
+# Suprimir advertencias específicas de secuencias de escape inválidas
+warnings.filterwarnings("ignore", category=SyntaxWarning, module="streamlit.elements.lib.column_types")
+warnings.filterwarnings("ignore", category=SyntaxWarning, module="streamlit.elements.widgets.button")
+warnings.filterwarnings("ignore", category=SyntaxWarning, module="streamlit_elements.core.callback")
 
 # Configuración de la página (DEBE ser la primera llamada a Streamlit)
 st.set_page_config(
