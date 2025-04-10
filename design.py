@@ -401,17 +401,7 @@ def show_header():
 
 def init_page():
     """Inicializa la configuración de la página"""
-    st.set_page_config(
-        page_title="VictorIA - Asistente de Análisis de Datos",
-        page_icon="🤖",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        menu_items={
-            'Get Help': 'https://docs.victoria.ai',
-            'Report a bug': 'https://github.com/victoria-ai/issues',
-            'About': 'VictorIA - Desarrollada por estudiantes de UNAB El Salvador'
-        }
-    )
+    # La configuración de página se ha movido al archivo principal
     set_custom_style()
 
 def show_chat_message(role, content, avatar=None):
