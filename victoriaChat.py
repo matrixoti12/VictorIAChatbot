@@ -22,6 +22,8 @@ import warnings
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="streamlit.elements.lib.column_types")
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="streamlit.elements.widgets.button")
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="streamlit_elements.core.callback")
+# Suprimir específicamente el aviso de \W en streamlit_elements
+warnings.filterwarnings("ignore", message="invalid escape sequence '\\W'")
 
 # Configuración de la página (DEBE ser la primera llamada a Streamlit)
 st.set_page_config(
